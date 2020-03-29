@@ -2,7 +2,7 @@
 
 ```
 # clone the project
-git clone https://github.com/mapleSong/vue-element-admin-cli.git
+git clone https://github.com/mapleSong/maple-vue-element-admin-cli.git
 
 # enter the project directory
 cd vue-element-admin-cli
