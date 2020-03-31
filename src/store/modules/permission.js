@@ -36,12 +36,19 @@ function filterAsyncRouter(routes, roles) {
 
 const state = {
     routers: [],
-    addRouters: []
+    addRouters: [],
+    cachedRouters: []
 }
 const mutations = {
     SET_ROUTERS: (state, routers) => {
         state.addRouters = routers
         state.routers = constantRouterMap.concat(routers)
+    },
+    ADD_CACHED_ROUTER: (state, router) => {
+        if (state.cachedRouters.includes(router.name)) return
+        if (!router.meta.noCache) {
+            state.cachedRouters.push(router.name)
+        }
     }
 }
 const actions = {
@@ -58,6 +65,9 @@ const actions = {
             commit('SET_ROUTERS', accessedRouters)
             resolve()
         })
+    },
+    addCacheRouter({ commit }, router) {
+        commit('ADD_CACHED_ROUTER', router)
     }
 }
 

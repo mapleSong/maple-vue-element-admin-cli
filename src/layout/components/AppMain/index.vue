@@ -1,7 +1,7 @@
 <template>
   <section class="app-main">
     <!-- <transition name="fade-transform" mode="out-in"> -->
-    <keep-alive :include="cachedViews">
+    <keep-alive :include="cacheRouters">
       <router-view :key="key" />
     </keep-alive>
     <!-- </transition> -->
@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: "AppMain",
   data() {
@@ -16,11 +17,15 @@ export default {
     };
   },
   computed: {
-    cachedViews() {
-      return []
-    },
+    ...mapGetters(['cacheRouters']),
+
     key() {
-      return this.$route.fullPath
+      return this.$route.path
+    }
+  },
+  watch: {
+    '$route.path'() {
+      this.$store.dispatch('permission/addCacheRouter', this.$route)
     }
   }
 

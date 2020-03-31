@@ -12,16 +12,20 @@
 </template>
 <script>
 export default {
+  name:'home',
   data() {
     return {
       tableData: [
         {
-          title:'test',
-          num:123
+          title: 'test',
+          num: 123
         }
       ]
     }
   },
+  mounted() {
+    console.log('enter home page!')
+  }
 }
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>
