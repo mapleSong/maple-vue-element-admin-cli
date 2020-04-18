@@ -5,7 +5,7 @@
 git clone https://github.com/mapleSong/maple-vue-element-admin-cli.git
 
 # enter the project directory
-cd vue-element-admin-cli
+cd maple-vue-element-admin
 
 # install dependency
 npm install
